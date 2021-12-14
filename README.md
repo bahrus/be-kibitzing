@@ -3,7 +3,7 @@
 Attribute-based equivalent of xtal-decorator.
 
 ```html
-<template be-kitzing='{
+<template be-kibitzing='{
     "selectorSequence": ["ginny-weasly", "book-bag"]
 }'>
     <tom-riddles-diary></tom-riddles-diary>
@@ -19,7 +19,7 @@ Attribute-based equivalent of xtal-decorator.
 Generates:
 
 ```html
-<template be-kitzing='{
+<template be-kibitzing='{
     "selectorSequence": ["ginny-weasly", "book-bag"]
 }'>
     <tom-riddles-diary></tom-riddles-diary>
