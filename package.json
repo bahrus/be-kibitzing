@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "be-decorated": "0.0.48",
-    "be-hive": "0.0.13"
+    "be-decorated": "0.0.89",
+    "be-hive": "0.0.36",
+    "xtal-element": "0.0.484"
   },
   "devDependencies": {
-    "xtal-test": "0.0.54",
-    "@skypack/package-check": "0.2.2",
-    "@custom-elements-manifest/analyzer": "0.5.7"
+    "xtal-test": "0.0.55",
+    "@skypack/package-check": "0.2.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
