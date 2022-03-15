@@ -3,7 +3,7 @@ import {register} from 'be-hive/register.js';
 import {BeKibitzingVirtualProps, BeKibitzingActions, BeKibitzingProps} from './types';
 import { addCSSListener } from 'xtal-element/lib/observeCssSelector.js';
 
-export class BeKibitizing implements BeKibitzingActions{
+export class BeKibitzing implements BeKibitzingActions{
     onSelectorSequence(self: this): void{
         
     }
@@ -27,8 +27,11 @@ define<BeKibitzingProps & BeDecoratedProps<BeKibitzingProps, BeKibitzingActions>
             ifWantsToBe,
             forceVisible: [upgrade],
             virtualProps:[
-                
+
             ]
         }
+    },
+    complexPropDefaults:{
+        controller: BeKibitzing,
     }
 });
