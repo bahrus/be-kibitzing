@@ -6,7 +6,8 @@
   "dependencies": {
     "be-decorated": "0.0.109",
     "be-hive": "0.0.42",
-    "xtal-element": "0.0.490"
+    "xtal-element": "0.0.490",
+    "css-observe": "0.0.58"
   },
   "devDependencies": {
     "xtal-test": "0.0.56",
