@@ -7,6 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <template be-kibitzing='{
+        "selectorSequence": ["ginny-weasly", "book-bag"]
+    }'>
+        <tom-riddles-diary></tom-riddles-diary>
+    </template>
+
+    <ginny-weasly>
+        <template shadowroot='open'>
+            <book-bag>
+                <template shadowroot='open'>
+                    <div>Talk to me.</div>
+                </template>
+            </book-bag>
+        </template>
+    </ginny-weasly>
+    <script type='importmap'>
+        {
+            "imports": {
+                "trans-render/": "../node_modules/trans-render/",
+                "be-decorated/": "../node_modules/be-decorated/",
+                "be-hive/": "../node_modules/be-hive/",
+                "xtal-element/": "../node_modules/xtal-element/",
+                "css-observe/": "../node_modules/css-observe/"
+            }
+        }
+    </script>
+    <script type='module'>
+        import '../be-kibitzing.js';
+    </script>
 </body>
 </html>
