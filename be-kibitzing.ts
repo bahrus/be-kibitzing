@@ -35,3 +35,5 @@ define<BeKibitzingProps & BeDecoratedProps<BeKibitzingProps, BeKibitzingActions>
         controller: BeKibitzing,
     }
 });
+
+register(ifWantsToBe, upgrade, tagName);
