@@ -39,8 +39,14 @@ export class BeKibitzing {
         }
     }
     doStuffToTargetElement({ targetElement, proxy }) {
+        if (targetElement.shadowRoot === null) {
+            setTimeout(() => {
+                this.doStuffToTargetElement(this);
+            }, 50);
+            return;
+        }
         const clone = proxy.content.cloneNode(true);
-        targetElement.appendChild(clone);
+        targetElement.shadowRoot.appendChild(clone);
         proxy.targetElement = undefined;
     }
 }
