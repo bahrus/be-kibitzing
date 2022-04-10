@@ -1,8 +1,24 @@
 {
   "name": "be-kibitzing",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements",
+    "shadow-dom"
+  ],
+  "description": "Insert a template into a Shadow DOM sequence.",
+  "main": "be-kibitzing.js",
+  "module": "be-kibitzing.js",
+  "exports": {
+    ".": "./be-kibitzing.js",
+    "./be-kibitzing.js": "./be-kibitzing.js"
+  },
+  "files": [
+    "*.*"
+  ],
+  "types": "types.d.ts",
   "dependencies": {
     "be-decorated": "0.0.109",
     "be-hive": "0.0.42",
@@ -10,11 +26,12 @@
     "css-observe": "0.0.59"
   },
   "devDependencies": {
-    "xtal-test": "0.0.56",
-    "@skypack/package-check": "0.2.2"
+    "@skypack/package-check": "0.2.2",
+    "xtal-test": "0.0.56"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "package-check": "package-check",
     "serve": "node node_modules/xtal-test/serve.js"
   },
   "repository": {

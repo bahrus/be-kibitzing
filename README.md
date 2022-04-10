@@ -1,6 +1,8 @@
 # be-kibitzing
 
-Attribute-based equivalent of xtal-decorator.
+Insert a template into a Shadow DOM sequence.
+
+be-kitizing is an attribute-based equivalent of xtal-decorator.
 
 ```html
 <template be-kibitzing='{
