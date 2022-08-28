@@ -2,7 +2,7 @@ import { define } from 'be-decorated/be-decorated.js';
 import { register } from 'be-hive/register.js';
 import('css-observe/css-observe.js');
 const seqLookup = new WeakMap();
-export class BeKibitzing {
+export class BeKibitzing extends EventTarget {
     onSelectorSequence({ proxy, selectorSequence }) {
         const host = proxy.getRootNode().host || document.body;
         this.plantListener(host, selectorSequence, false);
@@ -25,10 +25,10 @@ export class BeKibitzing {
         cssObserve.addEventListener('latest-match-changed', e => {
             const { latestMatch } = cssObserve;
             if (tail.length > 0) {
-                this.plantListener(latestMatch, tail, true);
+                this.plantListener(latestMatch.deref(), tail, true);
             }
             else {
-                this.proxy.targetElement = latestMatch;
+                this.proxy.targetElement = latestMatch.deref();
             }
         });
         if (host.shadowRoot === null) {
@@ -37,6 +37,7 @@ export class BeKibitzing {
         else {
             host.shadowRoot.appendChild(cssObserve);
         }
+        this.proxy.resolved = true;
     }
     doStuffToTargetElement({ targetElement, proxy }) {
         if (targetElement.shadowRoot === null) {

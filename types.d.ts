@@ -1,6 +1,6 @@
-import {BeDecoratedProps} from 'be-decorated/types';
+import {BeDecoratedProps, MinimalProxy} from 'be-decorated/types';
 
-export interface BeKibitzingVirtualProps{
+export interface BeKibitzingVirtualProps extends MinimalProxy{
     selectorSequence: string[],
     transform: any,
     targetElement: Element | undefined,

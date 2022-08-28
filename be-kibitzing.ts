@@ -6,7 +6,7 @@ import {CssObserveProps} from 'css-observe/types';
 
 const seqLookup = new WeakMap<Element & CssObserveProps, string[]>();
 
-export class BeKibitzing implements BeKibitzingActions{
+export class BeKibitzing extends EventTarget implements BeKibitzingActions{
     onSelectorSequence({proxy, selectorSequence}: this): void{
         const host = (<any>proxy.getRootNode()).host || document.body;
         this.plantListener(host, selectorSequence, false);
@@ -30,9 +30,9 @@ export class BeKibitzing implements BeKibitzingActions{
         cssObserve.addEventListener('latest-match-changed', e => {
             const {latestMatch} = cssObserve;
             if(tail.length > 0){
-                this.plantListener(latestMatch as Element, tail, true);
+                this.plantListener(latestMatch!.deref() as Element, tail, true);
             }else{
-                this.proxy.targetElement = latestMatch as Element;
+                this.proxy.targetElement = latestMatch!.deref() as Element;
             }
         });
         if(host.shadowRoot === null){
@@ -40,6 +40,7 @@ export class BeKibitzing implements BeKibitzingActions{
         }else{
             host.shadowRoot.appendChild(cssObserve);
         }
+        this.proxy.resolved = true;
     }
 
     doStuffToTargetElement({targetElement, proxy}: this){
