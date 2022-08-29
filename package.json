@@ -23,7 +23,7 @@
     "be-decorated": "0.0.147",
     "be-hive": "0.0.57",
     "xtal-element": "0.0.514",
-    "css-observe": "0.0.60"
+    "css-observe": "0.0.61"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
