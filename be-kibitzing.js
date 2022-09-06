@@ -39,10 +39,11 @@ export class BeKibitzing extends EventTarget {
         }
         this.proxy.resolved = true;
     }
-    doStuffToTargetElement({ targetElement, proxy }) {
+    doStuffToTargetElement(pp) {
+        const { targetElement, proxy } = pp;
         if (targetElement.shadowRoot === null) {
             setTimeout(() => {
-                this.doStuffToTargetElement(this);
+                this.doStuffToTargetElement(pp);
             }, 50);
             return;
         }

@@ -1,15 +1,15 @@
 import {define, BeDecoratedProps} from 'be-decorated/be-decorated.js';
 import {register} from 'be-hive/register.js';
-import {BeKibitzingVirtualProps, BeKibitzingActions, BeKibitzingProps} from './types';
+import {VirtualProps, Actions, PP, Proxy, Controller} from './types';
 import('css-observe/css-observe.js');
 import {CssObserveProps} from 'css-observe/types';
 
 const seqLookup = new WeakMap<Element & CssObserveProps, string[]>();
 
-export class BeKibitzing extends EventTarget implements BeKibitzingActions{
-    onSelectorSequence({proxy, selectorSequence}: this): void{
+export class BeKibitzing extends EventTarget implements Actions{
+    onSelectorSequence({proxy, selectorSequence}: PP): void{
         const host = (<any>proxy.getRootNode()).host || document.body;
-        this.plantListener(host, selectorSequence, false);
+        this.plantListener(host, selectorSequence!, false);
     }
 
     plantListener(host: Element, selectorSequence: string[], childElement: boolean){
@@ -43,10 +43,11 @@ export class BeKibitzing extends EventTarget implements BeKibitzingActions{
         this.proxy.resolved = true;
     }
 
-    doStuffToTargetElement({targetElement, proxy}: this){
+    doStuffToTargetElement(pp: PP){
+        const {targetElement, proxy} = pp;
         if(targetElement!.shadowRoot === null){
             setTimeout(() => {
-                this.doStuffToTargetElement(this);
+                this.doStuffToTargetElement(pp);
             }, 50);
             return;
         }
@@ -56,7 +57,7 @@ export class BeKibitzing extends EventTarget implements BeKibitzingActions{
     }
 }
 
-export interface BeKibitzing extends BeKibitzingProps{}
+export interface BeKibitzing extends Controller{}
 
 const tagName = 'be-kibitzing';
 
@@ -64,7 +65,7 @@ const ifWantsToBe = 'kibitzing';
 
 const upgrade = 'template';
 
-define<BeKibitzingProps & BeDecoratedProps<BeKibitzingProps, BeKibitzingActions>, BeKibitzingActions>({
+define<VirtualProps & BeDecoratedProps<VirtualProps, Actions>, Actions>({
     config:{
         tagName,
         propDefaults: {

@@ -20,9 +20,9 @@
   ],
   "types": "types.d.ts",
   "dependencies": {
-    "be-decorated": "0.0.147",
-    "be-hive": "0.0.57",
-    "xtal-element": "0.0.514",
+    "be-decorated": "0.0.153",
+    "be-hive": "0.0.63",
+    "xtal-element": "0.0.517",
     "css-observe": "0.0.61"
   },
   "devDependencies": {
